@@ -1,4 +1,4 @@
-# Challenge: Lambda3 - Building a RESTFul Api em Node.Js com TDD (Mocha & Chai)
+# Challenge: Lambda3 - RESTFul Api em Node.Js com TDD (Mocha & Chai)
 
 Challenge da empresa Lambda3 com o objetivo final de criar uma api que realize as 4 operações do HTTP: GET, DELETE, PUT & POST. Utilizando das boas práticas de programação e realizando o TDD.
 
