@@ -14,7 +14,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var port = 8000;
 
-var post = require('./API/routes/post');
+var post = require('./api/routes/post');
 var config = require('config'); // aqui estaremos carregando a localização da base de dados através dos arquivos JSON.
 
 //Opção das base de dados:
