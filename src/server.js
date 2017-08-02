@@ -28,3 +28,11 @@ var options = {
 mongoose.connect(config.DBHost, options);
 var database = mongoose.connection;
 database.on('error', console.error.bind(console, 'Erro ao conectar com a Base de Dados....: '));
+
+//Bloco de código responsável por mostrar os logs quando realizarmos os testes:
+if(config.util.getEnv('NODE_ENV') !== 'test') {
+
+    //'Morgan' é responsável por realizar as requisições de logger no middleware do Node.Js:    
+    app.use(morgan('combined'));
+}
+
