@@ -31,4 +31,6 @@ var PostSchema = new PostSchema(
     }
 );
 
+//Exportando o Schema do 'Post' para ser usada:
+module.exports = mongoose.model('post', PostSchema);
 
