@@ -117,21 +117,23 @@ Basta executar o comando: **(dentro da pasta src)**
 Fiquem à vontade em usar ou até mesmo testar ambas as conexões!! :)  
 Quaisquer dúvidas ao testar as api's via postman é só falar. Já disponibilizei dois cadastrados no MLab (para que possam testar o 'Listar')
 
+**sempre no formato: x-wwwform-urlencoded**
+
 ```
 [
     {
-        "_id": "59820cfa48ceed0afc7152d1",
+        "_id": "59821330eacea81b34c74d64",
         "title": "Flamengo - Campeonato Brasileiro 2017",
         "name": "Glaucia Lemos",
         "email": "glaucia_lemos@yahoo.com.br",
         "body": "Jogador não está nos planos e tem rejeição nos bastidores da Gávea. Rubro-Negro evita descartá-lo de forma oficial neste momento - não quer ir contra opinião da torcida de forma tão enfática"
     },
     {
-        "_id": "59820da548ceed0afc7152d2",
+        "_id": "59821472eacea81b34c74d69",
         "title": "Futebol Internacional - Neymar",
         "name": "Globo Esporte",
         "email": "globoesporte@globo.com",
-        "body": "Messi se despede de Neymar com vídeo de retrospectiva: \"Foi um prazer enorme\""
+        "body": "Messi se despede de Neymar com vídeo de retrospectiva: Foi um prazer enorme"
     }
 ]
 

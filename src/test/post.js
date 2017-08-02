@@ -22,6 +22,7 @@ chai.use(chaiHttp);
 
 //Bloco de código responsável por realizar os testes:
 describe('Posts', function() {
+    
     beforeEach(function(done) {
 
         //Aqui estarei 'limpando' a base de dados sempre quando for executar os testes:
@@ -29,7 +30,7 @@ describe('Posts', function() {
             done();
         });
     });   
-
+    
     // ==> Testando a rota: /GET
     describe('/GET post', function() {
         it('Deve selecionar todos os Posts', function(done) {
