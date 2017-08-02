@@ -78,7 +78,7 @@ describe('Posts', function() {
                 title: "Transferência Milionária",
                 name: "Rodrigo",
                 email: "teste@gmail.com",
-                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sextaaa",           
+                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta"           
             } 
 
             chai.request(server)
@@ -94,6 +94,34 @@ describe('Posts', function() {
             done();
             }); 
         });        
+    });
+
+    // ==> Testando a rota: /GET/:id
+    describe('/GET/:id post', function() {
+        it('Deve retornar um Post dado o id', function(done) {
+            
+            var post = new Post({
+                title: "Transferência Milionária",
+                name: "Rodrigo",
+                email: "teste@gmail.com",
+                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta" 
+            });
+
+            post.save(function(error, post) {
+                chai.request(server)
+                .get('/post/' + post.id)
+                .send(post)
+                .end(function(error, res) {
+                    res.should.be.a('object');
+                    res.body.should.have.property('title'); 
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('email');
+                    res.body.should.have.property('body');
+                    res.body.should.have.property('_id').eql(post.id);
+                    done();    
+                });
+            });
+        });    
     });
 
     
