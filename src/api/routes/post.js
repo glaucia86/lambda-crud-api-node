@@ -15,13 +15,10 @@ var Post = require('../models/post');
 function getAllPosts(req, res) {
     
     var query = Post.find({});
-    query.exec(function(error, posts) {
+    query.exec(function(error, posts) {        
         if(error)
-            //res.status(400).send('Erro ao Selecionar todos os Posts!'); //testar..
-            //res.status(400).json(error, 'Erro ao Selecionar todos os Posts!');
             res.send(error);
 
-        //res.status(200).json(posts); //testar depois....
         res.json(posts);
     });
 }
@@ -35,11 +32,8 @@ function addPost(req, res) {
     //Depois salvar as infos concedidas ao usuário na base de dados:
     newPost.save(function(error, post) {
         if(error) {
-            //res.status(400).send('Erro ao Criar um Novo Post!'); //testar..
-            //res.status(400).json(error, 'Erro ao Criar um Novo Post!');
             res.send(error);
         } else {
-            //res.status(200).json(message: 'Post criado com sucesso!', post); //testar depois....
             res.json({ message: 'Post criado com sucesso!', post });   
         }        
     });
@@ -49,11 +43,8 @@ function addPost(req, res) {
 function postById(req, res) {
     Post.findById(req.params.id, function(error, post) {
         if(error)
-            //res.status(400).send('Erro ao Selecionar o Livro pelo Id!'); //testar..
-            //res.status(400).json(error, 'Erro ao Selecionar o Livro pelo Id!');
             res.send(error);
-
-        //res.status(200).json(posts);
+        
         res.json(post);
     });
 }
@@ -62,7 +53,6 @@ function postById(req, res) {
 function deletePost(req, res) {
     Post.remove({ _id: req.params.id }, function(error, result) {
 
-        //res.status(200).json(message: 'Post excluído com sucesso!', result); //testar depois....
         res.json({ message: 'Post excluído com sucesso!', result });
     });
 }
