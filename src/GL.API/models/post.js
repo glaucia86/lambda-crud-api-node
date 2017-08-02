@@ -18,6 +18,9 @@
  * body: string
  */
 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 //Esquema do 'Post':
 var PostSchema = new Schema(
     {
