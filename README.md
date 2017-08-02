@@ -6,8 +6,9 @@ Challenge da empresa Lambda3 com o objetivo final de criar uma api que realize a
 
 - Node.Js;
 - Express.Js
-- MongoDb;
-- Mongoose;
+- MongoDb & MLab;
+- Code Metrics; (análise de desenvolvimento do codigo)
+- Visual Studio Code;
 - Json data (para retornar os dados);
 - PostMan (testar a API criada);
 - TDD (Mocha & Chai);
