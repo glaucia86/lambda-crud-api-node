@@ -45,7 +45,7 @@ function addPost(req, res) {
     });
 }
 
-// ==> 3) Método: 'postById' (acessar em: POST: http://localhost:8000/post/:id)
+// ==> 3) Método: 'postById' (acessar em: GET: http://localhost:8000/post/:id)
 function postById(req, res) {
     Post.findById(req.params.id, function(error, post) {
         if(error)
@@ -55,5 +55,14 @@ function postById(req, res) {
 
         //res.status(200).json(posts);
         res.json(post);
+    });
+}
+
+// ==> 3) Método: 'deletePost' (acessar em: DELETE: http://localhost:8000/post/:id)
+function deletePost(req, res) {
+    Post.remove({ _id: req.params.id }, function(error, result) {
+
+        //res.status(200).json(message: 'Post excluído com sucesso!', result); //testar depois....
+        res.json({ message: 'Post excluído com sucesso!', result });
     });
 }
