@@ -1,6 +1,6 @@
 /**
  * 
- * Arquivo: GL.API/models/post.js
+ * Arquivo: api/models/post.js
  * Author: Glaucia Lemos
  * Description: Arquivo responsável pelo modelo: 'Post' para realizar a conexão com a base
  *  de dados via Moongose.
