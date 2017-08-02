@@ -36,3 +36,20 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(morgan('combined'));
 }
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/json' }));
+
+app.get("/", (req, res) => res.json({ message: "Sejam Bem-Vindos a API: Lambda3!" }));
+
+//Definindo as rotas: GET & POST:
+app.route("/post")
+    .get(post.getAllPosts)
+    .post(post.addPost);
+
+//Definindo as rotas: GET, DELETE & PUT
+app.route("/post/:id")
+    .get(post.postId)
+    .delete(post.deletePost)
+    .put(post.updatePost);
