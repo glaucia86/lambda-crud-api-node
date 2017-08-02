@@ -42,12 +42,15 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 app.get("/", (req, res) => res.json({message: "Sejam Bem-Vindos a API: Lambda3!"}));
 
-//Definição das rotas para: GET & POST:
-app.route("/post")
-	.get(post.getAllPosts)
-	.post(post.addPost);
+//Definição das rotas para: GET (Selecionar Todos)
+app.route("/posts")
+    .get(post.getAllPosts)
 
-//Definição das rotas para: GET, DELETE & PUT
+//Definição das rotas para: POST:   
+app.route("/post")	
+    .post(post.addPost);
+    
+//Definição das rotas para: GET, DELETE & PUT (todos por Id)
 app.route("/post/:id")
 	.get(post.postById)
 	.delete(post.deletePost)

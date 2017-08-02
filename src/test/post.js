@@ -34,7 +34,7 @@ describe('Posts', function() {
     describe('/GET post', function() {
         it('Deve selecionar todos os Posts', function(done) {
             chai.request(server)
-            .get('/post')
+            .get('/posts')
             .end(function(error, res) {
 
                 //Se a rota estiver e selecionar todos os 'Posts' deverá retornar status: 200 - OK
