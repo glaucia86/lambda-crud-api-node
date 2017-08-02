@@ -23,3 +23,8 @@ var options = {
     server: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }},
     replset: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }}
 }
+
+//Conexão com a base de dados via 'mongoose':
+mongoose.connect(config.DBHost, options);
+var database = mongoose.connection;
+database.on('error', console.error.bind(console, 'Erro ao conectar com a Base de Dados....: '));
