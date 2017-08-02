@@ -49,13 +49,13 @@ Abre o cmd (caso esteja utilizando o Windows) e digite a path do seu projeto
 cd "C:\Users\NomeDoComputador\Documents\..."
 ```
 
-Depois, quando estiver na pasta do projeto, basta digitar no cmd a seguinte instrução:
+Depois, quando estiver na pasta do projeto, basta digitar no cmd a seguinte instrução: **(dentro do src)**
 
 ```
 npm install
 ```
 
-Ao digitar a instrução acima, automaticamente ele irá baixar todas as dependências listadas no arquivo package.json:
+Ao digitar a instrução acima, automaticamente ele irá baixar todas as dependências listadas e definidas no arquivo package.json:
 
 * `node_modules` - que contêm os packages do npm que precisará para o projeto.
 
@@ -72,13 +72,13 @@ Procurando seguir o padrão e design das API's, segue abaixo as URI's das rotas 
 
 obs.: api de exemplo através do site: https://jsonplaceholder.typicode.com
 
- ROTA                      |     HTTP(Verbo)   |      Descrição                | 
--------------------------  | ----------------- | ---------------------         | 
-/posts                     |       GET         | Selecionar Todos os Posts     | 
-/post                      |       POST        | Criar um Post                 | 
-/post/:post_id             |       GET         | Selecionar Por Id             | 
-/post/:post_id/            |       PUT         | Atualizar Por Id              |    
-/post/:post_id/            |       DELETE      | Excluir Por Id                |
+ ROTA                      |     HTTP(Verbo)   |      Descrição                |      Links (via PostMan)                 
+-------------------------  | ----------------- | ---------------------         | ---------------------------------------- 
+/posts                     |       GET         | Selecionar Todos os Posts     | GET:    http://localhost:8000/posts      
+/post                      |       POST        | Criar um Post                 | POST:   http://localhost:8000/post
+/post/:post_id             |       GET         | Selecionar Por Id             | GET:    http://localhost:8000/post/:id
+/post/:post_id/            |       PUT         | Atualizar Por Id              | PUT:    http://localhost:8000/post/:id   
+/post/:post_id/            |       DELETE      | Excluir Por Id                | DELETE: http://localhost:8000/post/:id
 
 ### Executando a Aplicação
 
