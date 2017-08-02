@@ -58,7 +58,7 @@ function postById(req, res) {
     });
 }
 
-// ==> 3) Método: 'deletePost' (acessar em: DELETE: http://localhost:8000/post/:id)
+// ==> 4) Método: 'deletePost' (acessar em: DELETE: http://localhost:8000/post/:id)
 function deletePost(req, res) {
     Post.remove({ _id: req.params.id }, function(error, result) {
 
@@ -66,3 +66,22 @@ function deletePost(req, res) {
         res.json({ message: 'Post excluído com sucesso!', result });
     });
 }
+
+// ==> 5) Método: 'updatePost' (acessar em: PUT: http://localhost:8000/post/:id)
+function updatePost(req, res) {
+    Post.findById({ _id: req.params.id }, function(error, post) {
+        if(error)
+            res.send(error);
+
+        //Caso não ocorra erros, retornar para o usuário a atualização do 'post'
+        Object.assign(post, req.body).save(function(error, post) {
+            if(error)
+                res.send(error);
+
+            res.json({ message: 'Post atualizado com sucesso!', post });
+        });
+    });
+}
+
+//Finalmente estarei aqui exportando todas as funções criadas:
+module.exports = { getAllPosts, addPost, postById, deletePost, updatePost };
