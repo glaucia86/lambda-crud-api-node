@@ -87,6 +87,7 @@ describe('Posts', function() {
             .end(function(error, res) {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Post criado com sucesso!');
                 res.body.post.should.have.property('title');
                 res.body.post.should.have.property('name');
                 res.body.post.should.have.property('email');
@@ -108,6 +109,7 @@ describe('Posts', function() {
             });
 
             post.save(function(error, post) {
+
                 chai.request(server)
                 .get('/post/' + post.id)
                 .send(post)
@@ -124,5 +126,36 @@ describe('Posts', function() {
         });    
     });
 
+    // ==> Testando a rota: /PUT/:id
+    describe('/PUT/:id post', function() {
+
+        it('Deve atualizar um Post dado o id', function(done) {
+            var post = new Post({
+                title: "Transferência Milionária",
+                name: "Rodrigo Cerqueira", //pretendo alterar esse campo
+                email: "teste@gmail.com", 
+                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta"  
+            });
+
+            post.save(function(error, post) {
+
+                chai.request(server)
+                .put('/post/' + post.id)
+                .send({
+                    title: "Transferência Milionária",
+                    name: "Glaucia Lemos", //alterando esse campo
+                    email: "glaucia_lemos@yahoo.com.br", 
+                    body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta" 
+                 })
+                .end(function(error, res) {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object'); 
+                    res.body.should.have.property('message').eql('Post atualizado com sucesso!');
+                    res.body.post.should.have.property('name').eql("Glaucia Lemos");
+                done();
+                });
+            });
+        });
+    });
     
 });
