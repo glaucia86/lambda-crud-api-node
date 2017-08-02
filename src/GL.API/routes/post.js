@@ -24,3 +24,22 @@ function getAllPosts(req, res) {
         res.json(posts);
     });
 }
+
+// ==> 2) Método: 'addPost' (acessar em: POST: http://localhost:8000/post)
+function addPost(req, res) {
+
+    //Primeiro eu crio um novo 'Post'
+    var newPost = new Post(req.body);
+
+    //Depois salvar as infos concedidas ao usuário na base de dados:
+    newPost.save(function(error, post) {
+        if(error) {
+            //res.status(400).send('Erro ao Criar um Novo Post!'); //testar..
+            //res.status(400).json(error, 'Erro ao Criar um Novo Post!');
+            res.send(error);
+        } else {
+            //res.status(200).json(message: 'Post criado com sucesso!', post); //testar depois....
+            res.json({ message: 'Post criado com sucesso!', post });   
+        }        
+    });
+}
