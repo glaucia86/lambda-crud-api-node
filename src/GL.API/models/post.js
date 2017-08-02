@@ -19,7 +19,7 @@
  */
 
 //Esquema do 'Post':
-var PostSchema = new PostSchema(
+var PostSchema = new Schema(
     {
         title: { type: String, required: true },
         name: { type: String, required: true },
