@@ -32,7 +32,7 @@ describe('Posts', function() {
     
     // ==> Testando a rota: /GET
     describe('/GET post', function() {
-        it('Deve selecionar todos os Posts', function(done) {
+        it('Deve selecionar todos os "Posts"', function(done) {
             chai.request(server)
             .get('/post')
             .end(function(error, res) {
@@ -46,6 +46,31 @@ describe('Posts', function() {
             done();
             });
         });    
+    });
+
+    
+    // ==> Testando a rota: /POST
+    describe('/POST post', function() {
+        it('Não deverá retornar dados de um "Post", uma vez que não foi definido o campo: "name"', function(done){
+
+            //Simulando a criação de um novo 'Post'. Porém sem incluir dados no campo 'name':
+            var post = {
+                title: "Transferência Milionária",
+                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta.",
+                email: "teste@gmail.com"
+            }
+            chai.request(server)
+            .post('/post')
+            .send(post)
+            .end(function(error, res) {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('errors');
+                res.body.errors.should.have.property('name');
+                res.body.errors.should.have.property('kind').eql('required');
+                done();
+            });
+        });
     });
     
 });
