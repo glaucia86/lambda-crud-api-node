@@ -7,33 +7,32 @@
  * 
  */
 
-//Require das dependências que estarei utilizando durante o desenvolvimento:
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
 var port = 8000;
-var post = require('./GL.API/routes/post');
-var config = require('config'); //require necessário que irá realizar a conexão com a base de dados
 
-//Opção das bases de dados:
+var post = require('./API/routes/post');
+var config = require('config'); // aqui estaremos carregando a localização da base de dados através dos arquivos JSON.
+
+//Opção das base de dados:
 var options = { 
-    server: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }},
-    replset: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }}
-}
+                server:{ socketOptions: {keepAlive: 1, connectTimeoutMS: 30000 }}, 
+                replset:{ socketOptions: {keepAlive: 1, connectTimeoutMS: 30000 }} 
+              };
 
-//Conexão com a base de dados via 'mongoose':
+//Conexão com a base de dados:
 mongoose.connect(config.DBHost, options);
-var database = mongoose.connection;
-database.on('error', console.error.bind(console, 'Erro ao conectar com a Base de Dados....: '));
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Erro ao conectar com a Base de Dados....: '));
 
-//Bloco de código responsável por mostrar os logs quando realizarmos os testes:
-if(config.util.getEnv('NODE_ENV') !== 'test') {
+//Essa parte do código estaremos mostrando os logs quando acontecer os testes:
+if(config.util.getEnv('NODE_ENV') !== 'Test') {
 
-    //'Morgan' é responsável por realizar as requisições de logger no middleware do Node.Js:    
-    app.use(morgan('combined'));
+    //Aqui estamos usando 'morgan'. Ele é responsável por realizar as requisições de logger no middleware para Node.Js
+    app.use(morgan('combined')); 
 }
 
 app.use(bodyParser.json());
@@ -41,20 +40,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
-app.get("/", (req, res) => res.json({ message: "Sejam Bem-Vindos a API: Lambda3!" }));
+app.get("/", (req, res) => res.json({message: "Sejam Bem-Vindos a API: Lambda3!"}));
 
-//Definindo as rotas: GET & POST:
+//Definição das rotas para: GET & POST:
 app.route("/post")
-    .get(post.getAllPosts)
-    .post(post.addPost);
+	.get(post.getAllPosts)
+	.post(post.addPost);
 
-//Definindo as rotas: GET, DELETE & PUT
+//Definição das rotas para: GET, DELETE & PUT
 app.route("/post/:id")
-    .get(post.postById)
-    .delete(post.deletePost)
-    .put(post.updatePost);
+	.get(post.postById)
+	.delete(post.deletePost)
+	.put(post.updatePost);
 
 app.listen(port);
-console.log("API executando na porta......: " + port);
+console.log("Aplicação executando na porta " + port);
 
 module.exports = app;
+
+

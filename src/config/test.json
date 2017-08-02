@@ -1,0 +1,4 @@
+{
+    //"DBHost": "mongodb://glemos:glau123@ds129053.mlab.com:29053/node-lambda-api" //via cloud: MLab
+    "DBHost": "mongodb://localhost/lambda-api-node" //==> maneira local usando o MongoDb
+}
