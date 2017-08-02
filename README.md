@@ -107,7 +107,7 @@ p.s.: no projeto, disponibilizei 2 maneiras de realizar a conexão de dados com 
 
 ## Executando os Testes:
 
-Basta executar o comando:
+Basta executar o comando: **(dentro da pasta src)**
 
 ```
 > npm test
@@ -115,3 +115,25 @@ Basta executar o comando:
 ```
 
 Fiquem à vontade em usar ou até mesmo testar ambas as conexões!! :)  
+Quaisquer dúvidas ao testar as api's via postman é só falar. Já disponibilizei dois cadastrados no MLab (para que possam testar o 'Listar')
+
+```
+[
+    {
+        "_id": "59820cfa48ceed0afc7152d1",
+        "title": "Flamengo - Campeonato Brasileiro 2017",
+        "name": "Glaucia Lemos",
+        "email": "glaucia_lemos@yahoo.com.br",
+        "body": "Jogador não está nos planos e tem rejeição nos bastidores da Gávea. Rubro-Negro evita descartá-lo de forma oficial neste momento - não quer ir contra opinião da torcida de forma tão enfática"
+    },
+    {
+        "_id": "59820da548ceed0afc7152d2",
+        "title": "Futebol Internacional - Neymar",
+        "name": "Globo Esporte",
+        "email": "globoesporte@globo.com",
+        "body": "Messi se despede de Neymar com vídeo de retrospectiva: \"Foi um prazer enorme\""
+    }
+]
+
+```
+
