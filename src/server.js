@@ -17,3 +17,9 @@ var bodyParser = require('body-parser');
 var port = 8000;
 var post = require('./GL.API/routes/post');
 var config = require('config'); //require necessário que irá realizar a conexão com a base de dados
+
+//Opção das bases de dados:
+var options = { 
+    server: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }},
+    replset: { socketOptions: { keepAlive:1, connectTimeoutMS: 30000 }}
+}
