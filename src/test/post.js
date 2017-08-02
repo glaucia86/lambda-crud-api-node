@@ -19,3 +19,16 @@ var server = require('../server');
 var should = chai.should();
 
 chai.use(chaiHttp);
+
+//Bloco de código responsável por realizar os testes:
+describe('Posts', function() {
+    beforeEach(function(done) {
+
+        //Aqui estarei 'limpando' a base de dados sempre quando for executar os testes:
+        Post.remove({}, function(error) {
+            done();
+        });
+    });   
+    
+    
+});
