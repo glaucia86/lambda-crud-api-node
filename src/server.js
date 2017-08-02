@@ -50,7 +50,7 @@ app.route("/post")
 
 //Definindo as rotas: GET, DELETE & PUT
 app.route("/post/:id")
-    .get(post.postId)
+    .get(post.postById)
     .delete(post.deletePost)
     .put(post.updatePost);
 

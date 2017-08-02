@@ -11,7 +11,7 @@
 var mongoose = require('mongoose');
 var Post = require('../models/post');
 
-//==> 1) Método: 'getAllPosts' (acessar em: GET: http://localhost:8000/post)
+//==> 1) Método: 'getAllPosts' (acessar em: GET: http://localhost:8000/posts)
 function getAllPosts(req, res) {
     
     var query = Post.find({});
@@ -20,6 +20,7 @@ function getAllPosts(req, res) {
             //res.status(400).send('Erro ao Selecionar todos os Posts!'); //testar..
             //res.status(400).json(error, 'Erro ao Selecionar todos os Posts!');
             res.send(error);
+
         //res.status(200).json(posts); //testar depois....
         res.json(posts);
     });
@@ -41,5 +42,18 @@ function addPost(req, res) {
             //res.status(200).json(message: 'Post criado com sucesso!', post); //testar depois....
             res.json({ message: 'Post criado com sucesso!', post });   
         }        
+    });
+}
+
+// ==> 3) Método: 'postById' (acessar em: POST: http://localhost:8000/post/:id)
+function postById(req, res) {
+    Post.findById(req.params.id, function(error, post) {
+        if(error)
+            //res.status(400).send('Erro ao Selecionar o Livro pelo Id!'); //testar..
+            //res.status(400).json(error, 'Erro ao Selecionar o Livro pelo Id!');
+            res.send(error);
+
+        //res.status(200).json(posts);
+        res.json(post);
     });
 }
