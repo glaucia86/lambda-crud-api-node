@@ -53,3 +53,8 @@ app.route("/post/:id")
     .get(post.postId)
     .delete(post.deletePost)
     .put(post.updatePost);
+
+app.listen(port);
+console.log("API executando na porta......: " + port);
+
+module.exports = app;
