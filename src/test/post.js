@@ -30,5 +30,22 @@ describe('Posts', function() {
         });
     });   
     
+    // ==> Testando a rota: /GET
+    describe('/GET post', function() {
+        it('Deve selecionar todos os Posts', function(done) {
+            chai.request(server)
+            .get('/post')
+            .end(function(error, res) {
+
+                //Se a rota estiver e selecionar todos os 'Posts' deverá retornar status: 200 - OK
+                res.should.have.status(200);
+
+                //Apresentando o status OK, devo retornar um array com todos os posts cadastrados no Banco:
+                res.body.should.be.a('array');
+        
+            done();
+            });
+        });    
+    });
     
 });
