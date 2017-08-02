@@ -157,5 +157,30 @@ describe('Posts', function() {
             });
         });
     });
+
+    // ==> Testando a rota: /DELETE/:id
+    describe('/DELETE/:id post', function() {
+
+	  it('Deve excluir um Post dado o id', function(done) {
+
+	  	var post = new Post({
+                title: "Transferência Milionária",
+                name: "Rodrigo Cerqueira", 
+                email: "teste@gmail.com", 
+                body: "Neymar deve fazer exames na quinta em Paris e ser apresentado na sexta"  
+            })
+
+	  	    post.save(function(error, post){
+				chai.request(server)
+			    .delete('/post/' + post.id)
+			    .end(function(error, res){
+				  	res.should.have.status(200);
+				  	res.body.should.be.a('object');
+				  	res.body.should.have.property('message').eql('Post excluído com sucesso!');
+			    done();
+                });
+            });
+        });
+    });
     
 });
