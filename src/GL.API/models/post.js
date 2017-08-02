@@ -18,3 +18,17 @@
  * body: string
  */
 
+//Esquema do 'Post':
+var PostSchema = new PostSchema(
+    {
+        title: { type: String, required: true },
+        name: { type: String, required: true },
+        email: { type: String, required: true },
+        body: { type: String, required: true },
+    },
+    {
+        versionKey: false
+    }
+);
+
+
