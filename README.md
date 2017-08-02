@@ -39,6 +39,8 @@ a base de dados do MongoDb em Cloud:
 
 * [MLab](https://mlab.com/)
 
+**p.s.:** por padrão já estou deixando a conexão de dados do Cloud: MLab, para facilitar todos vocês. Mas, caso queiram testar via MongoDb, bastam baixar e descomentar a connection criada nos arquivos contidos na pasta: 'config'.
+
 ### Instalando as Dependências (via Windows):
 
 Abre o cmd (caso esteja utilizando o Windows) e digite a path do seu projeto
