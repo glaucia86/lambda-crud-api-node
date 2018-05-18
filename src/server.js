@@ -14,8 +14,9 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var port = 8000;
 
-var post = require('./api/routes/post');
+var routes = require('./routes/routes');
 var config = require('config'); // aqui estaremos carregando a localização da base de dados através dos arquivos JSON.
+mongoose.Promise = global.Promise;
 
 //Opção das base de dados:
 var options = { 
@@ -24,7 +25,7 @@ var options = {
               };
 
 //Conexão com a base de dados:
-mongoose.connect(config.DBHost, options);
+mongoose.connect(config.DBHost, { useMongoClient: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erro ao conectar com a Base de Dados....: '));
 
@@ -41,20 +42,6 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
 app.get("/", (req, res) => res.json({message: "Sejam Bem-Vindos a API: Lambda3!"}));
-
-//Definição das rotas para: GET (Selecionar Todos)
-app.route("/posts")
-    .get(post.getAllPosts)
-
-//Definição das rotas para: POST:   
-app.route("/post")	
-    .post(post.addPost);
-    
-//Definição das rotas para: GET, DELETE & PUT (todos por Id)
-app.route("/post/:id")
-	.get(post.postById)
-	.delete(post.deletePost)
-	.put(post.updatePost);
 
 app.listen(port);
 console.log("Aplicação executando na porta " + port);
